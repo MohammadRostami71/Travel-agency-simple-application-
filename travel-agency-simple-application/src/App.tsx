@@ -1,13 +1,25 @@
 import * as React from 'react';
 import './App.css';
-import stockData from './data.json'
+
 import ResortsList from "./pages/ResortsList";
+import Layout from "./components/Layout/Layout";
+import {Routes,Route} from "react-router-dom";
+import Bucket from "./pages/Bucket";
+import ResortDetails from "./pages/ResortDetails";
+import NotFound from "./pages/NotFound";
 
 function App() {
     return (
-        <div className="App">
-            <ResortsList ResortsData={stockData}/>
-        </div>
+        <Layout>
+            <Routes>
+                <Route path='/' element={<ResortsList/>}/>
+                <Route path='/resorts' element={<ResortsList/>}/>
+                <Route path='/resorts/:id' element={<ResortDetails/>}/>
+                <Route path='/favorite' element={<Bucket/>}/>
+                <Route path='*' element={<NotFound/>}/>
+            </Routes>
+
+        </Layout>
     );
 }
 

@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useEffect, useState} from "react";
 import * as React from 'react';
 import {experimentalStyled as styled} from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -19,6 +19,7 @@ const AllResorts: FC<AllResortsProp> = props => {
         textAlign: 'center',
         color: theme.palette.text.secondary,
     }));
+
     return (
         <>
             <Box sx={{flexGrow: 1}}>
@@ -26,17 +27,14 @@ const AllResorts: FC<AllResortsProp> = props => {
                     {Array.from(Array(6)).map((_, index) => (
                         <Grid item xs={2} sm={4} md={4} key={index}>
                             <Item>
-                                {props.Resorts.map((data) => (
-                                    <Resort key={data.id} Resort={data}/>
+                                {props.Resorts.map((data: any, index: number) => (
+                                    <Resort key={index} Resort={data}/>
                                 ))}
                             </Item>
                         </Grid>
                     ))}
                 </Grid>
             </Box>
-            {/*{props.Resorts.map((data) => (*/}
-            {/*    <Resort key={data.id} Resort={data}/>*/}
-            {/*))}*/}
         </>
     )
 };

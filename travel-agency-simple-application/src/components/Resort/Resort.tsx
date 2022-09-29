@@ -7,34 +7,44 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import {useDispatch} from "react-redux";
+import {resortActions} from '../../store/resortSlice';
+import {Link} from "react-router-dom";
 
 interface ResortProps {
     Resort: { id: number, title: string, description: string, price: string, imageUrl: string }
 }
 
 const Resort: FC<ResortProps> = props => {
+    const {id, title, imageUrl, description, price} = props.Resort;
+    const dispatch = useDispatch();
+    const addToFav = () => {
+        dispatch(resortActions.addItemToFav({id, title, imageUrl, description, price}))
+    }
     return (
         <>
             <Card sx={{maxWidth: 345}}>
                 <CardMedia
                     component="img"
-                    alt={props.Resort.title}
+                    alt={title}
                     height="150"
-                    image={props.Resort.imageUrl}
+                    image={imageUrl}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {props.Resort.title}
+                        <Link to={`/resorts/${id}`}>
+                            {title}
+                        </Link>
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {props.Resort.description}
+                        {description}
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">
+                    <Button size="small" onClick={addToFav}>
                         <ShoppingCartIcon fontSize="large"/>
                     </Button>
-                    <Button size="small">Price : {props.Resort.price}</Button>
+                    <Button size="small">Price : {price}</Button>
                     <Button color={"secondary"} size="small">Read More</Button>
                 </CardActions>
             </Card>
