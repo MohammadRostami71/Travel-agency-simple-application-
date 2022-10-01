@@ -9,7 +9,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     return (
         <>
             <Header/>
-            <main>
+            <main className='container mx-auto'>
                 {props.children}
             </main>
 

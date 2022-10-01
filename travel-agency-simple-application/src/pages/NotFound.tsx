@@ -2,8 +2,8 @@ import React from "react";
 
 const NotFound: React.FC = () => {
     return (
-        <div className='centered'>
-            <p>Page Not Found!</p>
+        <div className='flex justify-center'>
+            <h1>Page Not Found!</h1>
         </div>
     )
 };

@@ -23,7 +23,7 @@ const Resort: FC<ResortProps> = props => {
     }
     return (
         <>
-            <Card sx={{maxWidth: 345}}>
+            <Card sx={{maxWidth: 400}} className='my-3.5'>
                 <CardMedia
                     component="img"
                     alt={title}
